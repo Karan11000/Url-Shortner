@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!-- Bootstap Css --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+      *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        
+      }
+    </style>
+</head>
+<body>
+  <div style="min-height:100vh; background-image: url(https://source.unsplash.com/1600x900/?china);">
+    <div class="container">
+        <h1 style="color: orange;">URL Shortner</h1>
+        <form action="/shortUrls" method="POST" class="my-4 form-inline">
+        <label for="fullUrl" class="sr-only">Url</label>
+        <input required placeholder="Url" type="url" name="fullUrl" id="fullUrl" class="form-control col mr-2">
+        <button class="btn btn-success" type="submit">Shrink</button>
+        </form>
+        <div style="display: flex;flex-wrap:wrap">
+          {{#each shortUrls}}
+            <div
+              style="border-radius:20px;background-color:rgba(255, 255, 255, 0.804);padding:0.8em;display:flex;justify-content:flex-start;margin:2vh;flex-wrap:wrap;"
+            >
+          <div style="width:100%">
+           <span style="font-weight: 900; color:red">Full Url:</span>
+           <a href="{{this.fullUrl}}" style="font-size: 1.5rem;display:flex;flex-wrap:wrap;margin:0.5rem">
+               <span>{{this.fullUrl}}</span>
+           </a>
+          </div>
+
+          <div style="display: flex;flex-wrap:wrap;">
+              <span style="color: red;font-weight:900;width:100%">
+                  Short Url:
+              </span>
+              <a href="{{this.shorterUrl}}" style="margin:0.8rem 1rem;width: 100%;">{{this.shorterUrl}}</a>
+          <span style="color: red;font-weight:900;">Clicks : </span>{{this.clicks}}
+          </div>
+          </div>
+          {{/each}}
+        </div>
+    </div>
+    </div>
+</body>
+</html>
