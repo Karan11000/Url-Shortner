@@ -3,15 +3,16 @@ const app = express();
 const mongoose = require("mongoose")
 const ShortUrl = require("./models/shortUrl");
 
-mongoose.connect('mongodb://localhost:27017/myapp', {
-    useNewUrlParser: true, useUnifiedTopology: true
-}).then(()=>{
+const DB = 'mongodb+srv://Karan:Karan11000@cluster0.o05wq.mongodb.net/mernstack?retryWrites=true&w=majority'
+
+mongoose.connect(DB)
+.then(()=>{
     console.log("succesfull connection");
 }).catch((err)=>{
     console.log(err);
 });
 
-app.set("view engine", "hbs")
+app.set("view engine", "hbs") 
 app.use(express.urlencoded({ extended: false }))
 
 app.get("/", async (req, res)=>{
